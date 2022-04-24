@@ -57,6 +57,7 @@ emails_directory = str(input('Drop .txt with emails: '))
 
 with open(emails_directory, 'r') as file:
 	emails_list = [row.strip() for row in file]
+	proxies = [None for _ in range(len(emails_list))]
 
 use_proxy = str(input('Use Proxies? (y/N): ')).lower()
 
@@ -68,9 +69,6 @@ if use_proxy == 'y':
 		proxy_folder = str(input('Drag and drop file with proxies (ip:port; user:pass@ip:port): '))
 
 		proxies = take_proxies(len(emails_list))
-
-else:
-	proxies = [None for _ in range(len(emails_list))]
 
 
 def mainth(data):
@@ -84,7 +82,7 @@ def mainth(data):
 			session.headers.update({'user-agent': random_useragent(), 'accept': 'application/json, text/javascript, */*; q=0.01', 'accept-language': 'ru,en;q=0.9,vi;q=0.8,es;q=0.7', 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'origin': 'https://whitelist.nft.com', 'referer': 'https://whitelist.nft.com/'})
 
 			if use_proxy == 'y':
-				if proxy_source == 1:
+				if proxy_source == 2:
 					session.proxies.update({'http': f'{proxy_type}://{proxy}', 'https': f'{proxy_type}://{proxy}'})
 
 				else:
