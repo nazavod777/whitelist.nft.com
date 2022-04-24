@@ -1,0 +1,7 @@
+PySocks==1.7.1
+web3==5.28.0
+requests==2.27.1
+capmonster-python==2.2
+urllib3==1.26.9
+loguru==0.6.0
+python-dotenv==0.19.2
